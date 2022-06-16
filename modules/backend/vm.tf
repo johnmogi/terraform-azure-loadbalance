@@ -22,20 +22,20 @@ resource "azurerm_linux_virtual_machine" "backendServer" {
     caching              = "ReadWrite"
   }
 }
-# resource "azurerm_virtual_machine_extension" "backendEndServerVm" {
-#   name                            = "backendMachine01"
-#   virtual_machine_id   = azurerm_linux_virtual_machine.backendServer.id
-#   publisher            = "Microsoft.Azure.Extensions"
-#   type                 = "CustomScript"
-#   type_handler_version = "2.0"
+resource "azurerm_virtual_machine_extension" "backendEndServerVm" {
+  name                            = "backendMachine01"
+  virtual_machine_id   = azurerm_linux_virtual_machine.backendServer.id
+  publisher            = "Microsoft.Azure.Extensions"
+  type                 = "CustomScript"
+  type_handler_version = "2.0"
 
-# #   settings = <<SETTINGS
-# #     {
-# #     "fileUris": [ "./backend.sh" ],
-# #     "commandToExecute": "sh ./backend.sh"
-# #     }
-# # SETTINGS
-#   tags = {
-#     environment = "Production"
-#   }
-# }
+  settings = <<SETTINGS
+    {
+    "fileUris": [ "https://kodo.press/sela/backend.sh" ],
+    "commandToExecute": "sh ./backend.sh"
+    }
+SETTINGS
+  tags = {
+    environment = "Development"
+  }
+}
