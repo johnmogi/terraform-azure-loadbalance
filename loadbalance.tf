@@ -9,7 +9,9 @@ resource "azurerm_lb" "azurerm_lb" {
     name                 = "frontend_ip"
     public_ip_address_id = azurerm_public_ip.frontend_public_ip.id
   }
+
 }
+
 
 # Load balancer rules
 
@@ -38,6 +40,7 @@ module "vm_back"{
   nic_ids = azurerm_network_interface.network_interface_db[0].id
 
   }
+
   module "vm_front"{
   source = "./modules/frontend"
   count="3"
@@ -76,5 +79,4 @@ resource "azurerm_network_interface" "network_interface_db" {
     private_ip_address_allocation = "Dynamic"
   }
 }
-
 

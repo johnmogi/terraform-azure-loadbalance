@@ -57,14 +57,23 @@ resource "azurerm_network_security_group" "frontend_subnet" {
     destination_address_prefix = "*"
   }
 }
-
   # connect be nic to nsg
 resource "azurerm_network_interface_security_group_association" "be_nsg_assoc" {
-  network_interface_id      = azurerm_network_interface.network_interface_app[0].id
+  network_interface_id      = azurerm_network_interface.network_interface_db[0].id
   network_security_group_id = azurerm_network_security_group.backend_subnet.id
 }
     # connect fe nic to nsg
 resource "azurerm_network_interface_security_group_association" "fe_nsg_assoc" {
-  network_interface_id      = azurerm_network_interface.network_interface_db[0].id
+  network_interface_id      = azurerm_network_interface.network_interface_app[0].id
+  network_security_group_id = azurerm_network_security_group.frontend_subnet.id
+}
+    # connect fe nic to nsg
+resource "azurerm_network_interface_security_group_association" "fe_nsg_assoc1" {
+  network_interface_id      = azurerm_network_interface.network_interface_app[1].id
+  network_security_group_id = azurerm_network_security_group.frontend_subnet.id
+}
+    # connect fe nic to nsg
+resource "azurerm_network_interface_security_group_association" "fe_nsg_assoc2" {
+  network_interface_id      = azurerm_network_interface.network_interface_app[2].id
   network_security_group_id = azurerm_network_security_group.frontend_subnet.id
 }

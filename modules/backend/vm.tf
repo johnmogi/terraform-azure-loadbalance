@@ -1,6 +1,6 @@
 resource "azurerm_linux_virtual_machine" "backendServer" {
 
-  name                = "postgresMachine"
+  name                = "sysadminMachine"
   location            = var.location
   resource_group_name = var.rg_name
   size                = "Standard_b2s"
@@ -17,25 +17,26 @@ resource "azurerm_linux_virtual_machine" "backendServer" {
     version   = "latest"
   }
 
+
   os_disk {
     storage_account_type = "Standard_LRS"
     caching              = "ReadWrite"
   }
 }
-resource "azurerm_virtual_machine_extension" "backendEndServerVm" {
-  name                            = "backendMachine01"
-  virtual_machine_id   = azurerm_linux_virtual_machine.backendServer.id
-  publisher            = "Microsoft.Azure.Extensions"
-  type                 = "CustomScript"
-  type_handler_version = "2.0"
+ resource "azurerm_virtual_machine_extension" "backendEndServerVm" {
+   name                            = "backendMachine01"
+   virtual_machine_id   = azurerm_linux_virtual_machine.backendServer.id
+   publisher            = "Microsoft.Azure.Extensions"
+   type                 = "CustomScript"
+   type_handler_version = "2.0"
 
-  settings = <<SETTINGS
-    {
-    "fileUris": [ "https://kodo.press/sela/backend.sh" ],
-    "commandToExecute": "sh ./backend.sh"
-    }
-SETTINGS
-  tags = {
-    environment = "Development"
-  }
-}
+   settings = <<SETTINGS
+     {
+     "fileUris": [ "https://kodo.press/sela/backend.sh" ],
+     "commandToExecute": "sh ./backend.sh"
+     }
+ SETTINGS
+   tags = {
+     environment = "Development"
+   }
+ }
