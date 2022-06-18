@@ -2,8 +2,8 @@
  # PRIVATE Network Security Group and rule
 resource "azurerm_network_security_group" "backend_subnet" {
   name                = "bENetworkSecurityGroup"
-  location            = azurerm_resource_group.weight_app.location
-  resource_group_name = azurerm_resource_group.weight_app.name
+  location            = azurerm_resource_group.weight_app_fix.location
+  resource_group_name = azurerm_resource_group.weight_app_fix.name
 
   security_rule {
     name                       = "SSH"
@@ -31,8 +31,8 @@ resource "azurerm_network_security_group" "backend_subnet" {
 # PUBLIC Network Security Group and rule
 resource "azurerm_network_security_group" "frontend_subnet" {
   name                = "FrontEndSecurityGroup"
-  location            = azurerm_resource_group.weight_app.location
-  resource_group_name = azurerm_resource_group.weight_app.name
+  location            = azurerm_resource_group.weight_app_fix.location
+  resource_group_name = azurerm_resource_group.weight_app_fix.name
 
   security_rule {
     name                       = "SSH"

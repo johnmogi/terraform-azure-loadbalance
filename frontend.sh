@@ -3,8 +3,10 @@ apt update -y
 apt install nodejs -y ;apt install npm -y
 apt install curl -y
 npm install git -v
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | sh
-export NVM_DIR="$HOME/.nvm"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+source ~/.bashrc
+
+nvexport NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
 nvm install 14
@@ -26,14 +28,14 @@ OKTA_CLIENT_SECRET="-dS3ittft57jAzdyGrR1AmJhVD9qr2xapEJla7MF"
 
 # Postgres configuration
 PGHOST=10.0.0.4
-PGUSERNAME=adminuser
+PGUSERNAME=postgres
 PGDATABASE=postgres
-PGPASSWORD=P@$$w0rd1234!
+PGPASSWORD=p@ssw0rd42
 PGPORT=5432
 """ > .env
-# npm run initdb
+npm run initdb
 npm i -g pm2
-start npm -- start --name weight
+pm2 start npm --name start -- run start
 env PATH=$PATH:/home/azureuser/.nvm/versions/node/v14.19.3/bin /usr/local/lib/node_modules/pm2/bin/pm2 startup systemd -u azureuser --hp /home/azureuser
 systemctl start pm2-azureuser
 pm2 savecd ..

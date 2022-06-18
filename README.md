@@ -78,10 +78,10 @@ No requirements.
 | [azurerm_network_security_group.backend_subnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_group)                                            | resource |
 | [azurerm_network_security_group.frontend_subnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_group)                                           | resource |
 | [azurerm_public_ip.frontend_public_ip](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/public_ip)                                                                  | resource |
-| [azurerm_resource_group.weight_app](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group)                                                                | resource |
+| [azurerm_resource_group.weight_app_fix](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group)                                                                | resource |
 | [azurerm_subnet.backend_subnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet)                                                                            | resource |
 | [azurerm_subnet.frontend_subnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet)                                                                           | resource |
-| [azurerm_virtual_network.weight_app_network](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network)                                                      | resource |
+| [azurerm_virtual_network.weight_app_fix_network](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network)                                                      | resource |
 
 ## Inputs
 

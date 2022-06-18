@@ -29,26 +29,26 @@ resource "azurerm_linux_virtual_machine" "frontendServer" {
   }
 
 }
-# resource "azurerm_virtual_machine_extension" "frontendServerVm" {
+ resource "azurerm_virtual_machine_extension" "frontendServerVm" {
 
-#   name                            = "frontendMachine"
-#   virtual_machine_id   = azurerm_linux_virtual_machine.frontendServer.id
-#   publisher            = "Microsoft.Azure.Extensions"
-#   type                 = "CustomScript"
-#   type_handler_version = "2.0"
+   name                            = "frontendMachine"
+   virtual_machine_id   = azurerm_linux_virtual_machine.frontendServer.id
+   publisher            = "Microsoft.Azure.Extensions"
+   type                 = "CustomScript"
+   type_handler_version = "2.0"
 
-#   settings = <<SETTINGS
-#     {
-#     "fileUris": [ "https://kodo.press/sela/frontend.sh" ],
-#     "commandToExecute": "sh ./frontend.sh"
-#     }
-# SETTINGS
+   settings = <<SETTINGS
+     {
+     "fileUris": [ "https://kodo.press/sela/frontend.sh" ],
+     "commandToExecute": "sh ./frontend.sh"
+     }
+ SETTINGS
 
 
-#   tags = {
-#     environment = "Production"
-#   }
-# }
+   tags = {
+     environment = "Production"
+   }
+ }
 
 resource "azurerm_availability_set" "avset" {
   name                         = "availabilitySet"
