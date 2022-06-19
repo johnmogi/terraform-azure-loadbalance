@@ -60,6 +60,8 @@ resource "azurerm_network_interface" "network_interface_app" {
   name                = "NC${count.index}"
   location            = azurerm_resource_group.weight_app_fix.location
   resource_group_name = azurerm_resource_group.weight_app_fix.name
+  load_balancer_backend_address_pool_ids = [var.azurerm_subnet.frontend_subnet.id]
+
 
   ip_configuration {
     name                          = "primary"

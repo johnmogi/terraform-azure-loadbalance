@@ -5,6 +5,7 @@ secret.tfvars
 .tfvars
 #direnv files
 .envrc
+variables.tf
 bin/
 
 terraform-provider-azure-devops
