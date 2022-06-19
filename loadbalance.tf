@@ -20,7 +20,7 @@ resource "azurerm_lb_rule" "azurerm_lb_rule" {
   name                           = "lb-rule-http"
   protocol                       = "Tcp"
   frontend_port                  = 8080
-  backend_port                   = 5432
+  backend_port                   = 8080
   frontend_ip_configuration_name = azurerm_lb.azurerm_lb.frontend_ip_configuration[0].name
 
   backend_address_pool_ids = [azurerm_lb_backend_address_pool.backend_pool.id]

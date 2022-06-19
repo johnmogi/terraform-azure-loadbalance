@@ -3,12 +3,10 @@ apt update -y
 apt install nodejs -y ;apt install npm -y
 apt install curl -y
 npm install git -v
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-source ~/.bashrc
-
-nvexport NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | sh
+source ~/.shrc
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 nvm install 14
 mkdir /var/www ; cd /var/www
 git clone https://github.com/johnmogi/bootcamp-app.git
@@ -38,4 +36,4 @@ npm i -g pm2
 pm2 start npm --name start -- run start
 env PATH=$PATH:/home/azureuser/.nvm/versions/node/v14.19.3/bin /usr/local/lib/node_modules/pm2/bin/pm2 startup systemd -u azureuser --hp /home/azureuser
 systemctl start pm2-azureuser
-pm2 savecd ..
+pm2 save
